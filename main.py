@@ -26,8 +26,8 @@ def property_city_filter(city):
     return inner
 
 
-def get_total_rooms(p):
-    """Gets the total number of rooms for a given property element
+def get_total_bedrooms(p):
+    """Gets the total number of bedrooms for a given property element
 
     :param p: The property element
     :return: The total number of rooms at the property
@@ -60,7 +60,7 @@ def map_property_data(p):
         "property_id": p.find("./PropertyID/Identification").attrib["IDValue"],
         "name": p.find("./PropertyID/MarketingName").text,
         "email": p.find("./PropertyID/Email").text,
-        "total_rooms": get_total_rooms(p)
+        "total_rooms": get_total_bedrooms(p)
     }
 
 
