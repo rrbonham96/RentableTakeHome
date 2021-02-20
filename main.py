@@ -57,7 +57,7 @@ def map_property_data(p):
     :return: The property mapped to the schema
     """
     return {
-        "property_id": p.find("./PropertyID/Identification").attrib["IDValue"],
+        "property_id": int(p.find("./PropertyID/Identification").attrib["IDValue"]),
         "name": p.find("./PropertyID/MarketingName").text,
         "email": p.find("./PropertyID/Email").text,
         "total_rooms": get_total_bedrooms(p)
