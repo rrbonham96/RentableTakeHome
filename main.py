@@ -60,7 +60,7 @@ def map_property_data(p):
 
     The schema is:
     {
-        property_id: string,
+        property_id: number,
         name: string,
         email: string,
         total_rooms: number
