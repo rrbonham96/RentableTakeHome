@@ -8,3 +8,5 @@
     - For Powershell, use `rentable_pve\Scripts\Activate.ps1`
 4. Install the external dependencies with `pip3 install -r requirements.txt`
 5. Run the application with `python3 main.py`
+6. The program output will be in `sample_abodo_feed.xml`
+7. To deactivate the virtual environment use `deactivate`
