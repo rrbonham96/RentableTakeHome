@@ -2,6 +2,8 @@
 import json
 import xml.etree.ElementTree as ET
 
+import requests
+
 
 def load_properties_from_file(input_file):
     """Get a list of properties from the given XML file
@@ -11,6 +13,17 @@ def load_properties_from_file(input_file):
     """
     tree = ET.parse(input_file)
     root = tree.getroot()
+    return root.findall("./Property")
+
+
+def load_properties_from_url(url):
+    """Get a list of properties from the given XML URL
+
+    :param url: URL of the XML file
+    :return: A list of property elements
+    """
+    xml_string = requests.get(url).text
+    root = ET.fromstring(xml_string)
     return root.findall("./Property")
 
 
@@ -76,12 +89,14 @@ def write_property_data_to_json(property_data_list, output_file):
 
 def main():
     # load_properties can be easily changed to get data from a different source
-    load_properties = load_properties_from_file
-    input_location = "sample_abodo_feed.xml"
+    # load_properties = load_properties_from_file
+    # input_location = "sample_abodo_feed.xml"
+    load_properties = load_properties_from_url
+    input_location = "https://s3.amazonaws.com/abodo-misc/sample_abodo_feed.xml"
 
     # write_properties can also be easily changed to work with something like a database
     write_properties = write_property_data_to_json
-    output_location = "sample_abodo_feed.json"
+    output_location = "output/sample_abodo_feed.json"
 
     # Data pipeline is straightforward
     all_properties = load_properties(input_location)
