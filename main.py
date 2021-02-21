@@ -96,7 +96,7 @@ def main():
 
     # write_properties can also be easily changed to work with something like a database
     write_properties = write_property_data_to_json
-    output_location = "output/sample_abodo_feed.json"
+    output_location = "sample_abodo_feed.json"
 
     # Data pipeline is straightforward
     all_properties = load_properties(input_location)
